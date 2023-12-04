@@ -8,6 +8,14 @@ export interface Message {
   read: boolean;
 }
 
+export interface Contact {
+  name: string;
+  lastName: string;
+  company: string;
+  number: string;
+  id: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -71,6 +79,65 @@ export class DataService {
     }
   ];
 
+  public contacts: Contact[] = [
+    {
+      name: 'Matt',
+      lastName: 'Chorsey',
+      company: 'Apple',
+      number: '(79) 99827-2123',
+      id: 0,
+    },
+    {
+      name: 'Lauren',
+      lastName: 'Ruthford',
+      company: 'Microsoft',
+      number: '(79) 99287-6521',
+      id: 1,
+    },
+    {
+      name: 'Jordan',
+      lastName: 'Firth',
+      company: 'OpenAI',
+      number: '(79) 99726-0192',
+      id: 2,
+    },
+    {
+      name: 'Bill',
+      lastName: 'Thomas',
+      company: 'Amazon',
+      number: '(79) 99726-0192',
+      id: 3,
+    },
+    {
+      name: 'Joanne',
+      lastName: 'Pollan',
+      company: 'Twitter',
+      number: '(79) 99726-0192',
+      id: 4,
+    },
+    {
+      name: 'Andrea',
+      lastName: 'Cornerston',
+      company: 'Meta',
+      number: '(79) 99726-0192',
+      id: 5,
+    },
+    {
+      name: 'Moe',
+      lastName: 'Chamont',
+      company: 'Facebook',
+      number: '(79) 99726-0192',
+      id: 5,
+    },
+    {
+      name: 'Kelly',
+      lastName: 'Richardson',
+      company: 'Google',
+      number: '(79) 99726-0192',
+      id: 5,
+    },
+  ]
+
   constructor() { }
 
   public getMessages(): Message[] {
@@ -80,4 +147,9 @@ export class DataService {
   public getMessageById(id: number): Message {
     return this.messages[id];
   }
+
+  public getContacts(): Contact[] {
+    return this.contacts;
+  }
+
 }

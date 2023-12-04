@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { RefresherCustomEvent } from '@ionic/angular';
-import { MessageComponent } from '../message/message.component';
 
 import { DataService, Message } from '../services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,12 +11,23 @@ import { DataService, Message } from '../services/data.service';
 })
 export class HomePage {
   private data = inject(DataService);
-  constructor() {}
+  constructor(
+    private router: Router,
+    ) {}
 
   refresh(ev: any) {
     setTimeout(() => {
       (ev as RefresherCustomEvent).detail.complete();
     }, 3000);
+  }
+
+  openPage(page: string) {
+    switch (page) {
+      case 'Contacts':
+        this.router.navigate(['/contact']);
+        break;
+      default:
+    }
   }
 
   getMessages(): Message[] {

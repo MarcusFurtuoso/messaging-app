@@ -11,6 +11,14 @@ const routes: Routes = [
     loadChildren: () => import('./view-message/view-message.module').then( m => m.ViewMessagePageModule)
   },
   {
+    path: 'register-contact',
+    loadChildren: () => import('./register-contact/register-contact.module').then( m => m.RegisterContactModule)
+  },
+  {
+    path: 'contact',
+    loadChildren: () => import('./contact/contact.module').then( m => m.ContactModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
