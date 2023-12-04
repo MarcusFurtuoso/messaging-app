@@ -1,0 +1,19 @@
+<ion-item
+  *ngIf="contact"
+  [routerLink]="'/contact/' + contact.id"
+  [detail]="false"
+>
+  <ion-label class="ion-text-wrap">
+    <ion-icon class="person-circle" name="person-circle-outline"></ion-icon>
+    <div class="info">
+      <h2 class="h2">{{ contact.name }} {{ contact.lastName }}</h2>
+      <h3 class="h3">
+        {{ contact.company }}
+      </h3>
+      <p>
+        {{ contact.number }}
+      </p>
+    </div>
+  </ion-label>
+  
+</ion-item>
