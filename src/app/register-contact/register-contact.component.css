@@ -1,0 +1,25 @@
+.person {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.person-circle {
+  width: 90px;
+  height: 90px;
+}
+
+.add-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.phone {
+  margin-top: 20px;
+}
+
+.add {
+  margin-right: 10px;
+}
