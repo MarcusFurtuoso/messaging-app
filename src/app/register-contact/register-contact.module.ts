@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterContactComponent } from './register-contact.component';
 import { RegisterContactRoutingModule } from './register-contact-routing.module';
 
@@ -11,6 +11,7 @@ import { RegisterContactRoutingModule } from './register-contact-routing.module'
     IonicModule,
     FormsModule,
     RegisterContactRoutingModule,
+    ReactiveFormsModule,
   ],
   declarations: [RegisterContactComponent]
 })

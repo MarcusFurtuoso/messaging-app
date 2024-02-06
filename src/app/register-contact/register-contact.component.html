@@ -1,49 +1,163 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button [text]='"Contacts"' default-href="/contact"></ion-back-button>
+      <ion-back-button
+        [text]="'Contacts'"
+        default-href="/contact"
+      ></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-button (click)="openPage('Done')"> Done </ion-button>
     </ion-buttons>
     <ion-title>New contact</ion-title>
   </ion-toolbar>
+</ion-header>
 
-  <div>
-
+<ion-content>
+  <form [formGroup]="registerForm" (ngSubmit)="submitForm()" novalidate>
     <div class="person">
       <ion-icon class="person-circle" name="person-circle-outline"></ion-icon>
     </div>
-
     <a class="add-photo" href="http://">Add Photo</a>
 
-    <ion-list>
-      <ion-item>
-        <ion-input placeholder="First Name"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input placeholder="Last name"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-input placeholder="Company"></ion-input>
-      </ion-item>
-    </ion-list>
+    <ion-item lines="full">
+      <ion-label position="floating">First Name</ion-label>
+      <ion-input
+        formControlName="firstName"
+        type="text"
+        aria-label="First Name"
+      ></ion-input>
+    </ion-item>
+    <div
+      *ngIf="
+         registerForm.get('firstName')?.touched &&
+        registerForm.get('firstName')?.dirty &&
+        registerForm.get('firstName')?.invalid
+      "
+    >
+      <div
+        class="ion-padding"
+        *ngIf="registerForm.controls?.firstName?.errors?.required"
+      >
+        <ion-text color="danger">{{ errorMessages.firstName.required }}</ion-text>
+      </div>
+      <div
+        class="ion-padding"
+        color="danger"
+        *ngIf="registerForm.controls?.firstName?.errors?.minlength"
+      >
+        <ion-text color="danger"
+          >{{ errorMessages.firstName.minlength }}</ion-text
+        >
+      </div>
+    </div>
 
-    <ion-list>
-      <ion-item class="phone">
-        <ion-button class="add" size="small" color="dark">
-          <ion-icon name="add-outline"></ion-icon>
-        </ion-button>
-        <ion-input placeholder="add phone"></ion-input>
-      </ion-item>
-      <ion-item class="phone">
-        <ion-button class="add" size="small" color="dark">
-          <ion-icon name="add-outline"></ion-icon>
-        </ion-button>
-        <ion-input placeholder="add email"></ion-input>
-      </ion-item>
-    </ion-list>
+    <ion-item>
+      <ion-label position="floating">Last Name</ion-label>
+      <ion-input
+        formControlName="lastName"
+        type="text"
+        aria-label="Last Name"
+      ></ion-input>
+    </ion-item>
+    <div
+      *ngIf="
+        registerForm.get('lastName')?.touched &&
+        registerForm.get('lastName')?.dirty &&
+        registerForm.get('lastName')?.invalid
+      "
+    >
+      <div
+        class="ion-padding"
+        *ngIf="registerForm.get('lastName')?.errors?.required"
+      >
+        <ion-text color="danger">{{ errorMessages.lastName.required }}</ion-text>
+      </div>
+      <div
+        class="ion-padding"
+        color="danger"
+        *ngIf="registerForm.get('lastName')?.errors?.minlength"
+      >
+        <ion-text color="danger">{{ errorMessages.lastName.minlength }}</ion-text>
+      </div>
+    </div>
 
-  </div>
+    <ion-item>
+      <ion-label position="floating">Company</ion-label>
+      <ion-input
+        formControlName="company"
+        type="text"
+        aria-label="Company"
+      ></ion-input>
+    </ion-item>
+    <div
+      *ngIf="
+        registerForm.get('company')?.touched &&
+        registerForm.get('company')?.dirty &&
+        registerForm.get('company')?.invalid
+      "
+    >
+      <div
+        class="ion-padding"
+        *ngIf="registerForm.controls?.company?.errors?.required"
+      >
+        <ion-text color="danger">{{ errorMessages.company.required }} </ion-text>
+      </div>
+    </div>
 
-</ion-header>
+    <ion-item class="phone">
+      <ion-button class="add" size="small" color="dark">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-button>
+      <ion-input
+        formControlName="mobile"
+        placeholder="add phone"
+        type="tel"
+        aria-label="Phone"
+      ></ion-input>
+    </ion-item>
+    <div
+      *ngIf="
+        registerForm.get('mobile')?.touched &&
+        registerForm.get('mobile')?.dirty &&
+        registerForm.get('mobile')?.invalid
+      "
+    >
+      <div
+        class="ion-padding"
+        *ngIf="registerForm.controls?.mobile?.errors?.required"
+      >
+        <ion-text color="danger"> {{ errorMessages.mobile.required }} </ion-text>
+      </div>
+    </div>
+
+    <ion-item class="email">
+      <ion-button class="add" size="small" color="dark">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-button>
+      <ion-input
+        formControlName="email"
+        placeholder="add email"
+        type="email"
+        aria-label="Email"
+      ></ion-input>
+    </ion-item>
+    <div
+      *ngIf="
+        registerForm.get('email')?.touched &&
+        registerForm.get('email')?.dirty &&
+        registerForm.get('email')?.invalid
+      "
+    >
+      <div
+        class="ion-padding"
+        *ngIf="registerForm.controls?.email?.errors?.required"
+      >
+        <ion-text color="danger"> {{ errorMessages.email.required }} </ion-text>
+      </div>
+      <div class="ion-padding" *ngIf="errorControl.email?.errors?.pattern">
+        <ion-text color="danger"> {{ errorMessages.email.email }} </ion-text>
+      </div>
+    </div>
+  </form>
+</ion-content>
